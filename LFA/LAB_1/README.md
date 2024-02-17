@@ -2,7 +2,7 @@
 ## Course  Formal Languages & Finite Automata
 ## Author: Maxim Comarov FAF-221
 ## Variant - 7
-Theory: 
+## Theory: 
 
 **Grammar**: Grammar is a set of instructions for building sentences. It's like a guide that shows you how to put together different pieces (like words or symbols) to form sentences that follow specific rules.
 

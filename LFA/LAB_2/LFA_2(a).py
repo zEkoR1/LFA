@@ -8,16 +8,12 @@ class Grammar:
         self.start_symbol = start_symbol
 
     def _generate_string_from_symbol(self, symbol, depth=0):
-        # Base case: if the symbol is a terminal, return it
         if symbol in self.terminals:
             return symbol
         elif symbol in self.non_terminals:
-            # To prevent infinite recursion, limit the depth of recursion
             if depth > 10:
-                return ''  # Simplification for deep recursion cases
-            # Randomly choose an expansion rule for the current symbol
+                return ''
             expansion = random.choice(self.rules[symbol])
-            # Recursively generate strings for each symbol in the chosen expansion
             return ''.join(self._generate_string_from_symbol(sym, depth + 1) for sym in expansion)
         return ''
 
@@ -29,12 +25,11 @@ class Grammar:
         return valid_strings
 
     def classify_grammar(self):
-        is_regular = True  # Assume it's regular until proven otherwise
+        is_regular = True
 
         for lhs, rhs_list in self.rules.items():
             for rhs in rhs_list:
-                # Type 3 (Regular) grammar rules are either A -> a or A -> aB (right-linear)
-                # or A -> Ba (left-linear), where B is a non-terminal and a is a terminal.
+
                 if not ((len(rhs) == 1 and rhs in self.terminals) or
                         (len(rhs) == 2 and rhs[0] in self.terminals and rhs[1] in self.non_terminals) or
                         (len(rhs) == 2 and rhs[1] in self.terminals and rhs[0] in self.non_terminals)):
@@ -43,7 +38,6 @@ class Grammar:
         if is_regular:
             return "Type 3 (Regular)"
         else:
-            # Given the recursive nature of some rules (like L -> aL), the grammar is at least Type 2 (Context-Free).
             return "Type 2 (Context-Free)"
 
 

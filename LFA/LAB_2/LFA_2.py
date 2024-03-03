@@ -28,7 +28,7 @@ def fa_to_regular_grammar(states, transitions, final_states):
     return grammar
 
 def ndfa_to_dfa(states, alphabet, transitions, final_states):
-    new_states = [set(['q0'])]  # Start with the initial state
+    new_states = [set(['q0'])]
     dfa_transitions = {}
     dfa_states = []
     dfa_final_states = []

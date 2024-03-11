@@ -77,5 +77,19 @@ def ndfa_to_dfa(states, alphabet, transitions, final_states):
 ```
 **Screen of program output**    
 ![img.png](img.png)
+## Visualisation of convertation NFA to DFA
+
+
+NFA:
+
+
+![image](https://github.com/zEkoR1/LFA/assets/115400307/50b1d53d-bc67-4a24-9ff5-f398c016e2d8)
+
+
+DFA:
+
+
+![image](https://github.com/zEkoR1/LFA/assets/115400307/435a41c3-882d-4b91-aed8-1fb101a3cab2)
+
 ## Conclusions
 This laboratory work provides a foundational understanding of finite automata, their classification into deterministic and non-deterministic types, and their relationship with regular grammars. The practical implementation of conversions between different representations deepens the comprehension of theoretical concepts, illustrating the direct application of formal languages and automata theory in computational contexts.

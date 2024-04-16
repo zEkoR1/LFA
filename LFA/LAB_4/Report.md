@@ -45,7 +45,25 @@ Examples of what must be generated:
 
 
 ## Implementation:
-The implementation is easy as it possible: In the while loop program looks for either special symbols (" ? " , " * " , " + ") either single choice by option ( "|" ) either given number of repetitions (^int) either directly adds whatever is in the rule (" 1 ", " 36 "). If there is some special symbols randomly adds the repetitions (max number of repetitions is 5 for code optimization).
+This code defines a function createPatternString(pattern) which generates a string based on a given pattern, incorporating random choices and repetitions as specified by the pattern. The pattern can include characters, groups of choices enclosed in parentheses (), and quantifiers like *, +, ?, and {} that control the number of times elements are included. The function uses auxiliary functions select() and randomChoice() to help in selecting random options from the given choices.
+
+   **Single occurrence from choices:** If the pattern includes a group of choices followed by no quantifier or any quantifier that is not *, +, ?, or {}, it selects one random option from those choices and appends it to the resulting string.
+
+   **One or more occurrences from choices:** When a group of choices is followed by a +, it selects and appends a random option from those choices to the resulting string, repeating this process between 1 to 5 times inclusively.
+
+   **Zero or more occurrences from choices:** For a group of choices followed by a *, it randomly decides whether to append any options or not. If so, it selects and appends a random option from those choices to the resulting string, with the number of times this happens ranging from 0 to 5.
+
+   **Fixed occurrences from choices:** If the pattern specifies a fixed number of occurrences with {}, it selects and appends a random option from the choices exactly that number of times.
+
+   **Zero or one occurrence from choices:** For a group of choices followed by a ?, it randomly decides whether to append a selected option from those choices or not, resulting in either one occurrence or none.
+
+   **Zero or one occurrence of a single character:** When a character (not a group of choices) is followed by a ?, it randomly decides whether to include that character in the resulting string or not.
+
+   **Direct addition of characters:** Any character in the pattern that is not part of a group of choices or immediately followed by a quantifier is added directly to the resulting string.
+
+   **Skipping special characters:** Characters that are part of the pattern syntax ((){}|+*? and ^) but don't form part of a recognizable pattern group or quantifier are skipped without adding to the resulting string.
+
+The select(option) function randomly selects one element from the given list of options, and randomChoice(sequence) splits a given string by the delimiter | and returns the resulting list, facilitating the random selection process within groups of choices.
 
 ## Results:
 Example 1:
